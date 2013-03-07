@@ -24,6 +24,18 @@ Use `AnnoMapper` to create `ResultSetMapper` for your entity to use with [jDBI](
 ResultSetMapper<Something> mapper = AnnoMapper.get(Something.class);
 ```
 
+Or register `AnnoMapperFactory` as a `ResultSetMapperFactory` to your DAO:
+
+```java
+@RegisterMapperFactory(AnnoMapperFactory.class)
+public interface SomethingDAO {
+
+    @SqlQuery("select * from Something where id = :id")
+    Something get(@Bind("id") long id);
+
+}
+```
+
 ### Maven
 
 ```xml
