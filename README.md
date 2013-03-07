@@ -24,7 +24,7 @@ Use `AnnoMapper` to create `ResultSetMapper` for your entity to use with [jDBI](
 ResultSetMapper<Something> mapper = AnnoMapper.get(Something.class);
 ```
 
-Or register `AnnoMapperFactory` as a `ResultSetMapperFactory` to your DAO:
+Or register `AnnoMapperFactory` as a `ResultSetMapperFactory`:
 
 ```java
 @RegisterMapperFactory(AnnoMapperFactory.class)
