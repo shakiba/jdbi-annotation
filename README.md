@@ -18,8 +18,18 @@ public class Something {
 }
 ```
 
-Use `AnnoMapper` to create `ResultSetMapper` for your entity to use with [jDBI](/brianm/jdbi/):
+Use `AnnoMapper` to create `ResultSetMapper` for your entity to use with [jDBI](https://github.com/brianm/jdbi/):
 
 ```java
 ResultSetMapper<Something> mapper = AnnoMapper.get(Something.class);
+```
+
+### Maven
+
+```xml
+<dependency>
+    <groupId>me.shakiba.jdbi</groupId>
+    <artifactId>jdbi-annotation</artifactId>
+    <version>0.0.1</version>
+</dependency>
 ```
