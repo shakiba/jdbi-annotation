@@ -70,7 +70,7 @@ public class AnnoMapper<C> implements ResultSetMapper<C> {
             logger.debug("map " + clazz);
         }
         try {
-            Constructor<C> constructor = clazz.getConstructor();
+            Constructor<C> constructor = clazz.getDeclaredConstructor();
             constructor.setAccessible(true);
             obj = constructor.newInstance();
             for (Anno anno : annos) {
