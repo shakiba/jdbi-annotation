@@ -42,6 +42,6 @@ public interface SomethingDAO {
 <dependency>
     <groupId>me.shakiba.jdbi</groupId>
     <artifactId>jdbi-annotation</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
 </dependency>
 ```
