@@ -10,7 +10,8 @@ public class Something {
     @Column
     private String name;
 
-    public Something() {
+    @SuppressWarnings("unused")
+    private Something() {
     }
 
     public Something(int id, String name) {
@@ -18,19 +19,19 @@ public class Something {
         this.name = name;
     }
 
-    public int getId() {
+    public int id() {
         return id;
     }
 
-    public void setId(int id) {
+    public void id(int id) {
         this.id = id;
     }
 
-    public String getName() {
+    public String name() {
         return name;
     }
 
-    public void setName(String name) {
+    public void name(String name) {
         this.name = name;
     }
 }

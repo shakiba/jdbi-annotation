@@ -15,6 +15,6 @@ public class AnnoMapperFactory implements ResultSetMapperFactory {
     @Override
     @SuppressWarnings("unchecked")
     public ResultSetMapper mapperFor(Class clazz, StatementContext ctx) {
-        return new AnnoMapper(clazz);
+        return AnnoMapper.get(clazz);
     }
 }
