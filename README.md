@@ -36,12 +36,14 @@ public interface SomethingDAO {
 }
 ```
 
+You can also use `@BindAnno` instead of `@BindBean` to bind annotated classes.
+
 ### Maven
 
 ```xml
 <dependency>
     <groupId>me.shakiba.jdbi</groupId>
     <artifactId>jdbi-annotation</artifactId>
-    <version>0.0.2</version>
+    <version>0.1.0</version>
 </dependency>
 ```
