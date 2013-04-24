@@ -2,7 +2,6 @@ package me.shakiba.jdbi.annotation;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Member;
 import java.lang.reflect.Method;
 import java.util.Date;
 
@@ -77,11 +76,19 @@ class AnnoMember {
         }
     }
 
-    private String nameOf(Member member, Column column) {
+    private String nameOf(Field member, Column column) {
         String name = column.name();
         if (name == null || name.length() == 0) {
             name = member.getName();
-            // TODO: drop starting set/get
+        }
+        return name;
+    }
+
+    private String nameOf(Method member, Column column) {
+        String name = column.name();
+        if (name == null || name.length() == 0) {
+            name = member.getName();
+            // TODO: drop set/get/is
         }
         return name;
     }
@@ -113,11 +120,11 @@ class AnnoMember {
         } else if (Date.class.isAssignableFrom(type)) {
             return Type.Date;
         }
-        return null;
+        return Type.Other;
     }
 
     enum Type {
-        String, Long, Int, Double, Float, Boolean, Date
+        String, Long, Int, Double, Float, Boolean, Date, Other
     }
 
     private static Logger logger = Logger.getLogger(AnnoMember.class);

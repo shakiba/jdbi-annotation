@@ -4,21 +4,32 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.WeakHashMap;
 
 import javax.persistence.Column;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class AnnoClass<C> {
+class AnnoClass<C> {
+
+    private final static WeakHashMap<Class<?>, AnnoClass<?>> cache = new WeakHashMap<Class<?>, AnnoClass<?>>();
+
+    @SuppressWarnings("unchecked")
+    public static <C> AnnoClass<C> get(Class<C> clazz) {
+        AnnoClass<?> get = null;
+        if ((get = cache.get(clazz)) == null) {
+            synchronized (cache) {
+                if ((get = cache.get(clazz)) == null) {
+                    cache.put(clazz, get = new AnnoClass<C>(clazz));
+                }
+            }
+        }
+        return (AnnoClass<C>) get;
+    }
 
     private final List<AnnoMember> setters = new ArrayList<AnnoMember>();
     private final List<AnnoMember> getters = new ArrayList<AnnoMember>();
-
-    // TODO: cache them!
-    public static <C> AnnoClass<C> get(Class<C> clazz) {
-        return new AnnoClass<C>(clazz);
-    }
 
     private AnnoClass(Class<C> clazz) {
         if (logger.isDebugEnabled()) {
