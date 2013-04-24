@@ -7,7 +7,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 class AnnoMember {
 
@@ -127,5 +128,5 @@ class AnnoMember {
         String, Long, Int, Double, Float, Boolean, Date, Other
     }
 
-    private static Logger logger = Logger.getLogger(AnnoMember.class);
+    private static Logger logger = LoggerFactory.getLogger(AnnoMember.class);
 }
