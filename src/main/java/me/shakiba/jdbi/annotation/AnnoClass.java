@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.WeakHashMap;
 
 import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,7 +36,25 @@ class AnnoClass<C> {
         if (logger.isDebugEnabled()) {
             logger.debug("init " + clazz);
         }
+        inspectClass(clazz);
+        inspectAncestors(clazz);
+        if (logger.isDebugEnabled()) {
+            logger.debug("init " + clazz + ": " + setters.size()
+                    + " setters and " + getters.size() + " getters.");
+        }
+    }
 
+    private void inspectAncestors(Class<? super C> clazz) {
+        clazz = clazz.getSuperclass();
+        while (clazz != null) {
+            if (clazz.isAnnotationPresent(MappedSuperclass.class)) {
+                inspectClass(clazz);
+            }
+            clazz = clazz.getSuperclass();
+        }
+    }
+
+    private void inspectClass(Class<? super C> clazz) {
         for (Field member : clazz.getDeclaredFields()) {
             if (member.getAnnotation(Column.class) != null) {
                 setters.add(new AnnoMember(clazz, member));
@@ -51,10 +70,6 @@ class AnnoClass<C> {
             } else if (member.getParameterTypes().length == 0) {
                 getters.add(new AnnoMember(clazz, member));
             }
-        }
-        if (logger.isDebugEnabled()) {
-            logger.debug("init " + clazz + ": " + setters.size()
-                    + " setters and " + getters.size() + " getters.");
         }
     }
 
