@@ -37,20 +37,18 @@ class AnnoClass<C> {
             logger.debug("init " + clazz);
         }
         inspectClass(clazz);
-        inspectAncestors(clazz);
+        inspectSuperclasses(clazz);
         if (logger.isDebugEnabled()) {
             logger.debug("init " + clazz + ": " + setters.size()
                     + " setters and " + getters.size() + " getters.");
         }
     }
 
-    private void inspectAncestors(Class<? super C> clazz) {
-        clazz = clazz.getSuperclass();
-        while (clazz != null) {
+    private void inspectSuperclasses(Class<? super C> clazz) {
+        while ((clazz = clazz.getSuperclass()) != null) {
             if (clazz.isAnnotationPresent(MappedSuperclass.class)) {
                 inspectClass(clazz);
             }
-            clazz = clazz.getSuperclass();
         }
     }
 
