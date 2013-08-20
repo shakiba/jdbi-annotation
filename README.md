@@ -3,6 +3,8 @@ JPA annotation extension for jDBI
 
 ### Usage
 
+#### Annotate
+
 Annotate your entity with JPA annotations:
 
 ```java
@@ -17,6 +19,8 @@ public class Something {
     private String name;
 }
 ```
+
+#### Map
 
 Use `AnnoMapper` to create `ResultSetMapper` for your entity to use with [jDBI](https://github.com/brianm/jdbi/):
 
@@ -35,8 +39,18 @@ public interface SomethingDAO {
 
 }
 ```
+#### Bind
 
 You can also use `@BindAnno` instead of `@BindBean` to bind annotated classes.
+
+```java
+public interface SomethingDAO {
+
+    @SqlUpdate("update something set name = :s.name where id = :s.id")
+    void update(@BindAnno("s") Something something);
+
+}
+```
 
 ### Maven
 
