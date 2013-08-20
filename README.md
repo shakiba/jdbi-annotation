@@ -41,7 +41,7 @@ public interface SomethingDAO {
 ```
 #### Bind
 
-You can also use `@BindAnno` instead of `@BindBean` to bind annotated classes.
+Use `@BindAnno` instead of `@BindBean` to bind annotated classes.
 
 ```java
 public interface SomethingDAO {
