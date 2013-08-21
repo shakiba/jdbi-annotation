@@ -1,6 +1,8 @@
 JPA annotation extension for jDBI
 ===============
 
+Extension for [jDBI](https://github.com/brianm/jdbi/) to use JPA annotation for mapping/binding instead of JavaBeans conventions.
+
 ### Usage
 
 #### Annotate
@@ -22,7 +24,7 @@ public class Something {
 
 #### Map
 
-Use `AnnoMapper` to create `ResultSetMapper` for your entity to use with [jDBI](https://github.com/brianm/jdbi/):
+Use `AnnoMapper` to create `ResultSetMapper`:
 
 ```java
 ResultSetMapper<Something> mapper = AnnoMapper.get(Something.class);
