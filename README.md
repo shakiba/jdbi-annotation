@@ -1,7 +1,7 @@
 JPA annotation extension for jDBI
 ===============
 
-Extension for [jDBI](https://github.com/brianm/jdbi/) to use JPA annotation for mapping/binding instead of JavaBeans conventions.
+Extension for [jDBI](https://github.com/brianm/jdbi/) to use JPA annotations for mapping/binding instead of JavaBeans conventions.
 
 ### Usage
 
