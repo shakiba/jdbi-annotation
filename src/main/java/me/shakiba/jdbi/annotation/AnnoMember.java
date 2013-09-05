@@ -64,9 +64,6 @@ class AnnoMember {
             logger.debug("write" + clazz + "/" + name + "/" + type + "/"
                     + value);
         }
-        if (value == null) {
-            return;
-        }
         if (method != null) {
             method.setAccessible(true);
             method.invoke(obj, value);
