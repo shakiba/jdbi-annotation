@@ -6,8 +6,6 @@ import java.sql.SQLException;
 
 import javax.persistence.Entity;
 
-import me.shakiba.jdbi.annotation.AnnoMember.Type;
-
 import org.skife.jdbi.v2.StatementContext;
 import org.skife.jdbi.v2.tweak.ResultSetMapper;
 import org.slf4j.Logger;
@@ -60,9 +58,9 @@ public class AnnoMapper<C> implements ResultSetMapper<C> {
 
     private Object get(AnnoMember annoMember, ResultSet rs, StatementContext ctx)
             throws SQLException {
-        Type type = annoMember.getType();
+        AnnoType annoType = annoMember.getType();
         String name = annoMember.getName();
-        Object value = type.getValue(rs, name);
+        Object value = annoType.getValue(rs, name);
         return rs.wasNull() ? null : value;
     }
 
