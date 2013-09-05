@@ -90,7 +90,7 @@ public abstract class AnnoType {
     public static AnnoType[] primitives = { String, Long, Int, Double, Float,
             Boolean, Date };
 
-    public static AnnoType of(Class<?> clazz) {
+    public static AnnoType of(Class<?> clazz) throws IllegalArgumentException {
         for (AnnoType annoType : AnnoType.primitives) {
             if (annoType.isAssignableFrom(clazz)) {
                 return annoType;

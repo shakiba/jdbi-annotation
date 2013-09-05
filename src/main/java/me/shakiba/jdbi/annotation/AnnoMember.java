@@ -23,7 +23,12 @@ class AnnoMember {
         this.field = member;
         this.column = member.getAnnotation(Column.class);
         this.name = nameOf(member, column);
-        this.annoType = AnnoType.of(member.getType());
+        try {
+            this.annoType = AnnoType.of(member.getType());
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("Unknow member type: " + clazz
+                    + "." + name);
+        }
     }
 
     public AnnoMember(Class<?> clazz, Method member) {
@@ -31,7 +36,12 @@ class AnnoMember {
         this.method = member;
         this.column = member.getAnnotation(Column.class);
         this.name = nameOf(member, column);
-        this.annoType = AnnoType.of(member.getParameterTypes()[0]);
+        try {
+            this.annoType = AnnoType.of(member.getParameterTypes()[0]);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("Unknow member type: " + clazz
+                    + "." + name);
+        }
     }
 
     public String getName() {
