@@ -26,8 +26,8 @@ class AnnoMember {
         try {
             this.annoType = AnnoType.of(member.getType());
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("Unknow member type: " + clazz
-                    + "." + name);
+            throw new IllegalArgumentException("Unknow member type: "
+                    + clazz.getName() + "." + name);
         }
     }
 
@@ -39,8 +39,8 @@ class AnnoMember {
         try {
             this.annoType = AnnoType.of(member.getParameterTypes()[0]);
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("Unknow member type: " + clazz
-                    + "." + name);
+            throw new IllegalArgumentException("Unknow member type: "
+                    + clazz.getName() + "." + name);
         }
     }
 
