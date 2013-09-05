@@ -62,36 +62,8 @@ public class AnnoMapper<C> implements ResultSetMapper<C> {
             throws SQLException {
         Type type = annoMember.getType();
         String name = annoMember.getName();
-        Object value;
-        switch (type) {
-        case String:
-            value = rs.getString(name);
-            break;
-        case Long:
-            value = rs.getLong(name);
-            break;
-        case Int:
-            value = rs.getInt(name);
-            break;
-        case Double:
-            value = rs.getDouble(name);
-            break;
-        case Float:
-            value = rs.getFloat(name);
-            break;
-        case Boolean:
-            value = rs.getBoolean(name);
-            break;
-        case Date:
-            value = rs.getDate(name);
-            break;
-        default:
-            return null;
-        }
-        if (rs.wasNull()) {
-            return null;
-        }
-        return value;
+        Object value = type.getValue(rs, name);
+        return rs.wasNull() ? null : value;
     }
 
     private static Logger logger = LoggerFactory.getLogger(AnnoMapper.class);
