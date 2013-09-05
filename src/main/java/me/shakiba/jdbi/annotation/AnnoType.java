@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 
-public abstract class AnnoType {
+abstract class AnnoType {
     public static AnnoType String = new AnnoType() {
         @Override
         public boolean isAssignableFrom(Class<?> clazz) {
