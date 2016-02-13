@@ -1,5 +1,6 @@
-JPA annotation extension for jDBI
-===============
+**Deprecation Notice:** This project is [updated and merged into jDBI 3](https://github.com/jdbi/jdbi/tree/jdbi3/jpa) by [Matthew Hall](https://github.com/qualidafial). This repository is not maintained any more.
+
+### JPA annotation extension for jDBI
 
 Extension for [jDBI](https://github.com/brianm/jdbi/) to use JPA annotations for mapping/binding instead of JavaBeans conventions.
 
