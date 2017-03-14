@@ -1,4 +1,4 @@
-**Deprecation Notice:** This project is [updated and merged into jDBI 3](https://github.com/jdbi/jdbi/tree/jdbi3/jpa) by [Matthew Hall](https://github.com/qualidafial). This repository is not maintained any more.
+**Deprecation Notice:** This project is [updated and merged into jDBI 3](https://github.com/jdbi/jdbi/tree/master/jpa) by [Matthew Hall](https://github.com/qualidafial). This repository is not maintained any more.
 
 ### JPA annotation extension for jDBI
 
